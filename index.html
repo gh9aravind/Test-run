@@ -66,6 +66,21 @@
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* കാർഡുകൾക്ക് കൂടുതൽ ഭംഗി നൽകാൻ */
+.venue-card, .detail-card, .countdown-cell {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.venue-card:hover, .detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(200, 150, 46, 0.15); /* ഒരു ഗോൾഡ് ഗ്ലോ */
+}
+
+.countdown-cell:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--gold-light);
+}
   
   /* ── HERO ── */
   .hero {
