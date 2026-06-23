@@ -946,7 +946,27 @@
   <div class="footer-ml">ഒരു പുതിയ തുടക്കം…</div>
 </footer>
 
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 <script>
+  // ── SMOOTH SCROLL INITIALIZATION ──
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // പ്രീമിയം സ്മൂത്ത് ഫീൽ
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+</script>
+  
 // ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const observer = new IntersectionObserver((entries) => {
