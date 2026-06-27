@@ -1671,9 +1671,11 @@
               <div class="rsvp-radio-box wide">More</div>
             </label>
                <input
-                type="number"
+                type="text"
                 id="guestOtherInput"
-                min="5" max="99"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                maxlength="2"
                 placeholder="5+"
                 style="
                  display:none;
