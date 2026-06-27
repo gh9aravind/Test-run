@@ -1919,6 +1919,51 @@ spawnEmbers('ember-field', 14);
 spawnEmbers('ember-field-save', 12);
 spawnEmbers('ember-field-hosted', 12);
 
+// ── RSVP FORM SUBMISSION ──
+const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL';
+
+document.getElementById('rsvpSubmitBtn').addEventListener('click', async function () {
+  const name       = document.getElementById('rsvpName').value.trim();
+  const phone      = document.getElementById('rsvpPhone').value.trim();
+  const guestRadio = document.querySelector('input[name="guestCount"]:checked');
+  const guestCount = guestRadio ? guestRadio.value : '';
+
+  if (!name)        { alert('Please enter your name · പേര് നൽകൂ'); return; }
+  if (!phone)       { alert('Please enter your phone number · ഫോൺ നമ്പർ നൽകൂ'); return; }
+  if (!guestCount)  { alert('Please select number of guests · എത്ര പേർ എന്ന് തിരഞ്ഞെടുക്കൂ'); return; }
+
+  const btn = document.getElementById('rsvpSubmitBtn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, guestCount })
+    });
+  } catch (err) {
+    console.warn('Network error (non-critical):', err);
+  }
+
+  // Show success modal
+  document.getElementById('modalGuestName').textContent = name;
+  document.getElementById('rsvpModal').classList.add('active');
+
+  btn.textContent = 'Confirm Attendance →';
+  btn.disabled = false;
+  document.getElementById('rsvpForm').reset();
+});
+
+// Close modal
+document.getElementById('rsvpModalClose').addEventListener('click', function () {
+  document.getElementById('rsvpModal').classList.remove('active');
+});
+
+document.getElementById('rsvpModal').addEventListener('click', function (e) {
+  if (e.target === this) this.classList.remove('active');
+});
 
 </script>
 </body>
