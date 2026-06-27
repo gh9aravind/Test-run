@@ -2114,6 +2114,22 @@ document.getElementById('rsvpFormOverlay').addEventListener('click', function (e
   }
 });
 
+document.getElementById('guestOther').addEventListener('change', function () {
+  const input = document.getElementById('guestOtherInput');
+  input.style.display = 'block';
+  input.focus();
+});
+
+document.querySelectorAll('input[name="guestCount"]').forEach(function(radio) {
+  if (radio.id !== 'guestOther') {
+    radio.addEventListener('change', function () {
+      const input = document.getElementById('guestOtherInput');
+      input.style.display = 'none';
+      input.value = '';
+    });
+  }
+});
+
 </script>
 </body>
 </html>
