@@ -944,6 +944,30 @@
   margin-bottom: -1px;
 }
 
+/* ── FLOATING LIGHT ORBS ── */
+.float-orbs {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.float-orbs .orb {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,196,106,0.9), rgba(232,196,106,0) 70%);
+  filter: blur(4px);
+  opacity: 0;
+  animation: floatUp 16s linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(0.8);   opacity: 0; }
+  12%  { opacity: 0.55; }
+  85%  { opacity: 0.35; }
+  100% { transform: translateY(-480px) scale(1.2); opacity: 0; }
+}
+
 </style>
 </head>
 <body>
