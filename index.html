@@ -954,18 +954,18 @@
 }
 .float-orbs .orb {
   position: absolute;
-  bottom: -60px;
+  bottom: -20px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,196,106,0.9), rgba(232,196,106,0) 70%);
-  filter: blur(4px);
+  background: radial-gradient(circle, rgba(232,196,106,1), rgba(232,196,106,0) 70%);
+  filter: blur(3px);
   opacity: 0;
-  animation: floatUp 16s linear infinite;
+  animation: floatUp 12s linear infinite;
 }
 @keyframes floatUp {
-  0%   { transform: translateY(0) scale(0.8);   opacity: 0; }
-  12%  { opacity: 0.55; }
-  85%  { opacity: 0.35; }
-  100% { transform: translateY(-480px) scale(1.2); opacity: 0; }
+  0%   { transform: translateY(0) scale(0.7);   opacity: 0; }
+  15%  { opacity: 0.9; }
+  75%  { opacity: 0.6; }
+  100% { transform: translateY(-320px) scale(1.1); opacity: 0; }
 }
 
 </style>
