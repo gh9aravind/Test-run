@@ -2055,7 +2055,10 @@ document.getElementById('rsvpSubmitBtn').addEventListener('click', async functio
   const name       = document.getElementById('rsvpName').value.trim();
   const phone      = document.getElementById('rsvpPhone').value.trim();
   const guestRadio = document.querySelector('input[name="guestCount"]:checked');
-  const guestCount = guestRadio ? guestRadio.value : '';
+  const otherInput = document.getElementById('guestOtherInput');
+  const guestCount = guestRadio
+   ? (guestRadio.value === 'Other' ? (otherInput.value || 'More') : guestRadio.value)
+   : '';
 
   if (!name)        { alert('Please enter your name · പേര് നൽകൂ'); return; }
   if (!phone)       { alert('Please enter your phone number · ഫോൺ നമ്പർ നൽകൂ'); return; }
